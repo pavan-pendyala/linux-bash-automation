@@ -1,0 +1,19 @@
+name: Linux Automation CI
+
+on:
+  push:
+    branches: [ "main", "dev" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Run system health script
+      run: |
+        chmod +x linux-day4/system_health.sh
+        ./linux-day4/system_health.sh
